@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Time Since May 23, 2023</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  .container {
+    text-align: center;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  }
+  h1 {
+    margin-bottom: 10px;
+  }
+  .time-since {
+    font-size: 1.5rem;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+  }
+  .time-since p {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>Time Since May 23, 2023</h1>
+    <div class="time-since" id="timeSince">
+      <p><span id="months">0</span> Months</p>
+      <p><span id="days">0</span> Days</p>
+      <p><span id="hours">0</span> Hours</p>
+      <p><span id="minutes">0</span> Minutes</p>
+      <p><span id="seconds">0</span> Seconds</p>
+    </div>
+  </div>
+
+  <script>
+    // Set the date of May 23, 2023
+    const eventDate = new Date("May 23, 2023").getTime();
+
+    // Update the time since every 1 second
+    setInterval(() => {
+      const now = new Date().getTime();
+      const timePassed = now - eventDate;
+
+      const months = Math.floor(timePassed / (1000 * 60 * 60 * 24 * 30));
+      const days = Math.floor((timePassed % (1000 * 60 * 60 * 24 * 30)) / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((timePassed % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((timePassed % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((timePassed % (1000 * 60)) / 1000);
+
+      document.getElementById("months").textContent = months;
+      document.getElementById("days").textContent = days;
+      document.getElementById("hours").textContent = hours;
+      document.getElementById("minutes").textContent = minutes;
+      document.getElementById("seconds").textContent = seconds;
+    }, 1000);
+  </script>
+</body>
+</html>
